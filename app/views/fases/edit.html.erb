@@ -1,0 +1,29 @@
+<ol class="breadcrumb">
+  <li><a href="<%= root_path%>">Principal</a></li>
+  <li><%= link_to "Fases", fases_path%></li>
+  <li class="active">Cadastrar Fase</li>
+</ol>
+<%= painel_titulo("Fase - #{@fase.descricao}").html_safe%>
+<div class="panel-body" id="form">
+
+  <div class="row">
+    <div class="col-md-10"> <%= exibe_erros(@fase).html_safe if @fase.errors.any?%></div>
+  </div>
+  <p>
+
+<%= form_for @fase, :html => {:class => 'form-horizontal',:role => 'form' } do |f| %>
+
+    <%= render :partial => 'form',:locals => { :f => f, :role => @role } %>
+
+<%end%>
+
+</p>
+</div>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        //$("#custos_table").createFilter();
+        $('[role=form]').ketchup();
+        $("[id*=periodo]").mask("99/99/9999");
+    });
+</script>

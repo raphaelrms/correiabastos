@@ -1,0 +1,26 @@
+#encoding: utf-8
+<ol class="breadcrumb">
+  <li><a href="<%= root_path%>">Principal</a></li>
+  <li>Notícia <%= @noticia.id%></li>
+</ol>
+<%= painel_titulo("Quadro de avisos").html_safe %>
+<div class="panel-body">
+  <fieldset>
+    <div class="noticia">
+      <h2><%= @noticia.titulo %>
+        <%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, edit_noticia_path(@noticia) %></h2>
+      <small>Autor: <span class="autor"><%= @noticia.autor %></span></small><br>
+      <small>Postado em: <%= l @noticia.created_at.to_date %></small>
+      <p><small></small></p>
+
+      <div class="corpo">
+        <%= @noticia.corpo.html_safe %>
+      </div>
+
+      <div id="like_ajax">
+        <%#= render "botoes_like" %>
+      </div>
+      </div>
+  </fieldset>
+</div>
+</div>

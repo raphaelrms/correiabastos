@@ -1,0 +1,133 @@
+#encoding: utf-8
+<ol class="breadcrumb">
+  <li><a href="<%= root_path%>">Principal</a></li>
+  <li class="active">Fases</li>
+</ol>
+<%= painel_titulo("Fases").html_safe %>
+<div class="panel-body">
+  <div class="span8">
+    <div class="well">
+    <%= form_tag pesquisar_fases_path,:method => :get, :class => 'form-horizontal' , :role => 'form' do |f| %>
+          <div class="row">
+        <div class="form-group">
+          <%= label_tag :filtro, "Filtro:",:class => "col-xs-3 control-label" %>
+          <div class="col-xs-4">
+            <%= text_field_tag :filtro, (@termo if @termo),{:placeholder => "Insira um termo para pesquisar", :class => "form-control","data-validate" => "validate(minlength(0))"}%>
+          </div>
+          </div>
+        </div>
+          <div class="row">
+          <div class="form-group">
+            <%= label_tag :inicio_periodo, "Período:",:class => "col-xs-3 control-label" %>
+          <div class="col-xs-2">
+            <%= text_field_tag :inicio_periodo, (params[:inicio_periodo] if params[:inicio_periodo]),{:placeholder => "Periodo início", :class => "form-control","data-validate" => "validate(dateBR)"}%>
+          </div>
+          <div class="col-xs-2">
+            <%= text_field_tag :fim_periodo, (params[:fim_periodo] if params[:fim_periodo]),{:placeholder => "Período fim", :class => "form-control","data-validate" => "validate(dateBR)"}%>
+          </div>
+
+          <div class="col-xs-3">
+            <%= submit_tag 'Pesquisar', :class => 'btn btn-primary' %>
+          </div>
+          </div>
+          </div>
+    <%end%>
+    </div>
+
+
+    <div class="table-responsive">
+      <table class="table table-condensed table-striped table-hover" id="fase_table">
+        <thead>
+        <tr>
+          <th>Número</th>
+          <th>Curso</th>
+          <th>Descrição</th>
+          <th>Orçamento</th>
+          <th>Data Início Prevista</th>
+          <th>Data Fim Prevista</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%if !@fases.blank?%>
+        <%@fases.each do |fase|%>
+        <tr>
+        <td><%= link_to fase.id, fase%></td>
+        <td><%=link_to fase.curso.nome, fase.curso%></td>
+        <td><%= fase.descricao%></td>
+        <td><div id="fase_orcamento_show"><%=fase.orcamento%></div></td>
+          <% p fase.inicio_periodo if fase.inicio_periodo%>
+          <% p fase.fim_periodo if fase.fim_periodo%>
+        <td><%=l fase.inicio_periodo.to_date if fase.inicio_periodo%></td>
+        <td><%=l fase.fim_periodo.to_date if fase.fim_periodo%></td>
+        <td class="col-md-3"><span class="row"><%= link_to("Detalhar", fase_path(fase), :class => 'btn btn-xs btn-default')%>
+          <%= link_to 'Editar', edit_fase_path(fase), :class => "btn btn-xs btn-primary "%>
+          <%= link_to 'Excluir', fase_path(fase), :method => "delete", :class => "btn btn-xs btn-danger ", :data => {:confirm => (fase.custos.count > 0 ? "Existem custos atrelados a esta fase. Tem certeza que deseja excluir a fase <strong>#{fase.descricao.mb_chars.upcase}</strong>?" : "Tem certeza que deseja excluir a fase <strong>#{fase.descricao.mb_chars.upcase}</strong>?")}%></span></td>
+        </tr>
+            <%end%>
+        <%else%>
+                <tr>
+        <td>Nenhum registro encontrado</td>
+        </tr>
+        <%end%>
+        </tbody>
+      </table>
+      <div align="right"><%= (will_paginate @fases,:remote => true,:renderer => BootstrapPagination::Rails) if !@fases.blank?%></div>
+      <div class="row">
+        <a data-toggle="modal" class="btn btn-success" href="#new-fase-nova"  type="button">Nova Fase</a>
+        <%= render "fases/new_fase"%>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+          //$("#custos_table").createFilter();
+        $( document ).ready(function() {
+            $("#fase_table").tablesorter({theme : "bootstrap",
+                dateFormat: 'uk',
+                widthFixed: true,
+                headers: {
+                    // set "sorter : false" (no quotes) to disable the column
+                    0: {
+                        sorter: "digit"
+                    },
+                    1: {
+                        sorter: "text"
+                    },
+                    2: {
+                        sorter: "text"
+                    },
+                    3: {
+                        sorter: "text"
+                    },
+                    4: {
+                        sorter: "shortDate"
+                    },
+                    5: {
+                        sorter: "shortDate"
+                    },
+                    6: {
+                        sorter: false,
+                        filter: false
+                    },
+                    7: {
+                        sorter: false,
+                        filter: false
+                    }
+                },
+                headerTemplate : '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
+                widgets : [ "uitheme", "filter" ],
+                ignoreCase: true,
+                widgetOptions : {
+                    zebra : ["even", "odd"],
+                    filter_reset : ".reset"
+                }            });
+        });
+        $('[role=form]').ketchup();
+        $("[id*=periodo]").mask("99/99/9999");
+        });
+</script>

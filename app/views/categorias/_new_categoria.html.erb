@@ -1,0 +1,36 @@
+<div id="new-categoria" aria-hidden="true" role="dialog" aria-labelledby="meuModal_novo" class="modal" style="display: none;">
+  <%#= simple_form_for(@fase_nova, :url => fase_path(@fase_nova),:html => {:class => 'form-horizontal' })  do |f| %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">&#215;</a>
+        <h3 class="modal-title" id="meuModal_nova">Novo categoria</h3>
+      </div>
+      <div class="modal-body">
+        <%= form_for @categoria_nova, :html => {:class => 'form-horizontal' } do |f| %>
+            <%= render :partial => 'form',:locals => { :f => f, :role => @role } %>
+            <div class="modal-footer">
+            <div class="well well-sm">
+                <a class="btn" data-dismiss="modal" href="#">Fechar</a>
+                <%= f.submit 'Cadastrar', :class => 'btn btn-primary' %>
+              </div>
+            </div>
+        <% end %>
+        <%# end %>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $("#categoria_dt_referencia").mask("99/99/9999");
+        $('#new_categoria').ketchup();
+
+
+
+    });
+
+    $('#new_categoria').on('hidden.bs.modal', function () {
+        $(".ketchup-error").hide();
+    });
+</script>

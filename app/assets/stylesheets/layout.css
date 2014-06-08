@@ -1,0 +1,174 @@
+.rodape {
+ margin-top: 20px;
+
+}
+
+/*input { margin-right: 10px;}*/
+/*.error {*/
+    /*border: 1px solid #b94a48!important; background-color: #fee!important;*/
+    /*border-bottom-left-radius: 4px;*/
+    /*border-bottom-right-radius: 4px;*/
+    /*border-top-left-radius: 4px;*/
+    /*border-top-right-radius: 4px;*/
+    /*padding: 1px;*/
+    /*margin-right: 10px;*/
+    /*padding-right: 20px;*/
+    /*color: red;*/
+
+
+.field_with_errors { display: inline}
+
+
+/*input { margin-right: 10px;}*/
+/*.error {*/
+    /*border: 1px solid #b94a48!important; background-color: #fee!important;*/
+    /*border-bottom-left-radius: 4px;*/
+    /*border-bottom-right-radius: 4px;*/
+    /*border-top-left-radius: 4px;*/
+    /*border-top-right-radius: 4px;*/
+    /*padding: 1px;*/
+    /*margin-right: 10px;*/
+    /*padding-right: 20px;*/
+    /*color: red;*/
+/*}*/
+
+/*.error:before{*/
+    /*content: '';*/
+    /*display: inline-block;*/
+    /*position: relative;*/
+    /*left: -8px;*/
+    /*top: 2px;*/
+    /*height: 16px;*/
+    /*width: 15px;*/
+    /*border-color: #b94a48;*/
+    /*border-width: 1px;*/
+    /*border-style: none none solid solid;*/
+    /*background-color: #fee!important;*/
+    /*transform: rotate(45deg);*/
+    /*-webkit-transform: rotate(45deg);*/
+    /*-moz-transform: rotate(45deg);*/
+
+
+/*input:focus{*/
+    /*border-color: rgba(81, 203, 238, 0.8);*/
+    /*box-shadow: 0 1px 1px rgba(81, 203, 238, 0.8) inset, 0 0 8px rgba(81, 203, 238, 0.8);*/
+    /*outline: 0 none;*/
+    /*border-bottom-left-radius: 4px;*/
+    /*border-bottom-right-radius: 4px;*/
+    /*border-top-left-radius: 4px;*/
+    /*border-top-right-radius: 4px;*/
+
+/*}*/
+
+.tooltipa{
+    display: inline;
+    position: relative;
+}
+.tooltipa:hover:after{
+    background: #333;
+    background: #6699FF;
+    border-radius: 5px;
+    bottom: 26px;
+    color: #fff;
+    content: attr(title);
+    left: -15%;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 98;
+    width: 220px;
+}
+.tooltipa:hover:before{
+    border: solid;
+    border-color: #6699FF transparent;
+    border-width: 6px 6px 0 6px;
+    bottom: 20px;
+    content: "";
+    left: -4%;
+    position: absolute;
+    z-index: 99;
+}
+
+
+
+/*.ui-tooltip, .arrow:after {*/
+    /*background: #bce8f1;*/
+    /*border: 2px solid white;*/
+/*}*/
+/*.ui-tooltip {*/
+    /*padding: 10px 20px;*/
+    /*color: blue;*/
+    /*width: 20%;*/
+    /*border-radius: 10px;*/
+    /*font: bold 14px "Helvetica Neue", Sans-Serif;*/
+    /*box-shadow: 0 0 7px yellow;*/
+/*}*/
+/*.arrow {*/
+    /*width: 70px;*/
+    /*height: 16px;*/
+    /*overflow: hidden;*/
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*margin-left: -35px;*/
+    /*bottom: -16px;*/
+/*}*/
+/*.arrow.top {*/
+    /*top: -16px;*/
+    /*bottom: auto;*/
+/*}*/
+/*.arrow.left {*/
+    /*left: 20%;*/
+/*}*/
+/*.arrow:after {*/
+    /*content: "";*/
+    /*position: absolute;*/
+    /*left: 20px;*/
+    /*top: -20px;*/
+    /*width: 25px;*/
+    /*height: 25px;*/
+    /*box-shadow: 6px 5px 9px -9px black;*/
+    /*-webkit-transform: rotate(45deg);*/
+    /*-moz-transform: rotate(45deg);*/
+    /*-ms-transform: rotate(45deg);*/
+    /*-o-transform: rotate(45deg);*/
+    /*tranform: rotate(45deg);*/
+/*}*/
+/*.arrow.top:after {*/
+    /*bottom: -20px;*/
+    /*top: auto;*/
+
+.lista_erros {
+    color: #D63301;
+    right: 25px;
+    /*border: 1px solid #b94a48!important;*/
+    /*background-color: #fee!important;*/
+    /*border-bottom-left-radius: 4px;*/
+    /*border-bottom-right-radius: 4px;*/
+    /*border-top-left-radius: 4px;*/
+    /*border-top-right-radius: 4px;*/
+    text-align: justify;
+    width:50%;
+
+}
+
+.registro {
+    font-size: 11px;
+    text-align: right;
+    display: block;
+    margin-top: -20px;
+    margin-right: 11px;
+    margin-bottom: -13px;
+}
+
+fieldset h2{
+    border-bottom: 2px dotted #CCC;
+    font-size: 18px;
+    margin-top: 10px;
+    color: #002F6D;
+}
+
+.descritivo{
+    display:block;
+    font-size:11px;
+    color: #A0A0A0;
+    font-weight:normal;
+}

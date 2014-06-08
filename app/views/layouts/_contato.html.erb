@@ -1,0 +1,68 @@
+#encoding: utf-8
+<div id="novo-contato" aria-hidden="true" role="dialog" aria-labelledby="meuModal_novo" class="modal" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">&#215;</a>
+        <h3 class="modal-title" id="meuModal_nova">Contato</h3>
+      </div>
+      <div class="modal-body">
+        <%= form_tag contato_path,:method => :post, :class => 'form-horizontal' , :role => 'form', :id => "form-contato" do |f| %>
+            <div class="form-group">
+              <%= label_tag :nome, "Nome completo:",:class => "col-xs-3 control-label" %>
+              <div class="col-md-7">
+                <%= text_field_tag :nome,nil,{:placeholder => "Preencha seu nome completo", :class => "form-control","data-validate" => "validate(required)"}%>
+                <p class="help-block" style="font-size: 11px;">Preencha seu nome completo. Obrigatório.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :email, "E-mail:",:class => "col-xs-3 control-label" %>
+              <div class="col-md-7">
+                <%= text_field_tag :email,nil,{:placeholder => "Preencha seu email", :class => "form-control","data-validate" => "validate(email)"}%>
+                <p class="help-block" style="font-size: 11px;">Preencha seu email. Obrigatório.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :telefone_ddd, "Celular:",:class => "col-xs-3 control-label" %>
+              <div class="col-md-2">
+                <%= text_field_tag :telefone_ddd,nil,{:class => "form-control",:placeholder => "DDD",:maxlength => 2}%>
+              </div>
+              <div class="col-md-4">
+                <%= text_field_tag :telefone,nil,{:class => "form-control",:placeholder => "Telefone", :pattern => "{1}"}%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :assunto, "Assunto:",:class => "col-xs-3 control-label" %>
+              <div class="col-md-7">
+                <%= text_field_tag :assunto,nil,{:class => "form-control",:placeholder => "Assunto"}%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :mensagem, "Mensagem:",:class => "col-xs-3 control-label" %>
+              <span class="help-block" style="font-size: 11px;"><div class="col-xs-offset-5">Você pode digitar <span id="contador">2000</span> caracteres ainda.</div>
+              <div class="col-md-7">
+                <%= text_area_tag :mensagem,nil,{:placeholder => "Digite sua mensagem", :class => "form-control", :style => "height: 117px;width:315px", :maxlength => 2000}%>
+              </div>
+                  </span>
+
+            </div>
+
+
+            <div class="modal-footer">
+              <div class="well well-sm">
+                <a class="btn btn-default" data-dismiss="modal" href="#" id="fechar">Fechar</a>
+                <%= submit_tag 'Enviar', :class => 'btn btn-primary' %>
+              </div>
+            </div>
+        <% end %>
+        <%# end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

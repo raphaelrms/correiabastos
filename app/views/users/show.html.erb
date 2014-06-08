@@ -1,0 +1,16 @@
+<ol class="breadcrumb">
+  <li><a href="<%= root_path%>">Principal</a></li>
+  <li>Usuários</li>
+</ol>
+<%= painel_titulo("Usuário - #{@user.name}").html_safe %>
+<div class="panel-body">
+
+  <div class="form-group">
+    <p><b>Nome:</b> <%= @user.name %></p>
+    <p><b>Email: </b><%= @user.email if @user.email %></p>
+    <p><b>Data de cadastro: </b><%= @user.created_at.to_date %></p>
+    <p><b>Grupo: </b><%= @user.roles.first.name.titleize unless @user.roles.first.nil? %></p>
+  </div>
+  <%= link_to 'Editar', edit_users_path(@user), :class => 'btn btn-success'  %>
+</div>
+</div>

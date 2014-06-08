@@ -1,0 +1,34 @@
+<div id="edit-fase-<%= fase.id %>" aria-hidden="true" role="dialog" aria-labelledby="meuModal_<%= fase.id %>" class="modal" style="display: none;">
+  <%= simple_form_for(fase, :url => fase_path(fase),:html => {:class => 'form-horizontal' })  do |f| %>
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3 class="modal-title" id="meuModal_<%= fase.id %>">Editar</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <div class="form-group">
+
+          <%= render :partial => 'form',:locals => { :f => f, :role => f } %>
+
+    </div>
+    <div class="modal-footer">
+      <%= f.submit "Alterar", :class => "btn" %>
+      <a class="btn" data-dismiss="modal" href="#">Fechar</a>
+    </div>
+  <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $('#edit-fase-<%= fase.id %>').ketchup();
+
+
+    });
+
+</script>

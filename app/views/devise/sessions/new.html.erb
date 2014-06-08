@@ -1,0 +1,46 @@
+<ol class="breadcrumb">
+  <li><a href="<%= root_path%>">Principal</a></li>
+  <li class="active">Login</li>
+</ol>
+
+<%= painel_titulo("Acesse sua conta").html_safe %>
+<div class="panel-body">
+<br>
+<%= form_for resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' } do |f| %>
+
+  <div class="form-group">
+  <%= f.label :email,:class => "col-sm-1 col-md-2 control-label" %>
+  <div class="col-sm-2 col-md-3">
+  <%= f.text_field :email, :autofocus => true, :class => "form-control",:placeholder => "Digite seu e-mail cadastrado"%>
+  </div>
+  </div>
+
+  <div class="form-group">
+  <%= f.label :password, "Senha",:class => "col-xs-1 col-sm-3 col-md-2 control-label" %>
+    <div class="col-sm-2 col-md-3">
+  <%= f.password_field :password, :class => "form-control", :placeholder => "Digite sua senha"%>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row" >
+    <%= f.label :remember_me, "Mantenha-me logado",:class => "col-xs-6 col-sm-3 col-md-2 control-label" %>
+      <div class="col-sm-2 col-md-3">
+      <%= f.check_box :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+    </div>
+    </div>
+  </div>
+
+    <div class="form-actions">
+      <div class="col-sm-2 col-md-offset-2">
+  <%= f.submit "Acessar", :class => 'btn btn-primary', :style => "margin-top:25px;" %>
+
+</div>
+
+</div>
+
+</div>
+      <br><%= render "devise/shared/links" %>
+<% end %>
+<br>
+</div>

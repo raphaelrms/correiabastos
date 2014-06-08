@@ -1,0 +1,13 @@
+#encoding: utf-8
+<div style="text-align: left;">
+  <b>Portal bastoscorrea</b><br />
+  <% if @assunto %>
+      <h3 style="margin-bottom: 3px; text-align: center;"><%= @assunto %></h3>
+  <% end %>
+  <hr />
+</div>
+<%= yield %>
+<hr/>
+<p style="font-size: smaller;">
+  Este e-mail foi gerado automaticamente. Favor <b>não responder</b>.
+</p>

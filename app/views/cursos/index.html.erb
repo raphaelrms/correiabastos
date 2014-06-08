@@ -1,0 +1,42 @@
+#encoding: utf-8
+<ol class="breadcrumb">
+  <li><a href="<%= root_path%>">Principal</a></li>
+  <li class="active">Cursos</li>
+</ol>
+<%= painel_titulo("Cursos").html_safe %>
+<div class="panel-body">
+  <div class="span8">
+    <div class="table-responsive">
+      <table class="table table-condensed table-striped table-hover">
+        <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Ano</th>
+          <th>Arquivos</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @cursos.each do |curso| %>
+            <tr>
+              <td><%= link_to curso.nome, curso %></td>
+              <td><%= curso.ano %></td>
+              <td>
+                <ul>
+              <%curso.arquivos.each do |arquivo|%>
+              <li><%= link_to arquivo.arquivo_file_name,arquivo%></li>
+               <%end%>
+                </ul>
+              </td>
+              <td><%= link_to("Detalhar", curso_path(curso), :class => 'btn btn-xs btn-default')%>
+                  <%= link_to("Editar", edit_curso_path(curso), :class => 'btn btn-xs btn-primary',:style => "margin-left:7px;")%>
+                  <%= link_to("Remover", curso_path(curso), :style => "margin-left:7px;", :data => { :confirm => "Você tem certeza?" }, :method => :delete, :class => 'btn btn-xs btn-danger')%></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Novo curso', new_curso_path, :class => 'btn btn-success'  %>
+    </div>
+  </div>
+</div>
+</div>

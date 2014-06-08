@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Projeto1</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body id="home">
+<%= flash_message.html_safe %>
+      <%= render 'layouts/navbar'%>
+
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' && !user_signed_in? %>
+          <%= link_to "Cadastre-se", new_registration_path(resource_name) , :class => "registro"%><br />
+      <% end -%>
+
+      <%= yield %>
+  <!--<div style="background-color: #f8f8f8; border: 1px solid #e7e7e7 !important;border-radius: 7px;margin-top: 20px;">-->
+    <%#= render 'layouts/footer'%>
+
+</body>
+</html>
+
+

@@ -1,0 +1,41 @@
+#encoding:utf-8
+<ol class="breadcrumb">
+  <li><a href="<%= root_path%>">Principal</a></li>
+  <li class="active">Categorias</li>
+</ol>
+<%= painel_titulo("Categorias").html_safe %>
+<div class="panel-body">
+  <div class="span8">
+    <div class="table-responsive">
+      <table class="table table-condensed table-striped table-hover">
+        <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Observações</th>
+          <th>Data de Cadastro</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @categorias.each do |categoria| %>
+            <tr>
+              <td><%= categoria.descricao %></td>
+              <td><%= categoria.observacoes %></td>
+              <td><%= categoria.created_at.to_date %></td>
+              <td>
+                <a data-toggle="modal" class="btn btn-xs btn-primary" href="#edit-categoria-<%= categoria.id %>"  type="button">Editar</a>
+                <%= render categoria %>
+              </td>
+              <td><%= link_to("Remover", categoria_path(categoria), :style => "margin-top:-7px;", :data => { :confirm => "Você tem certeza que deseja excluir a categoria <strong>"+categoria.descricao+"</strong>?" }, :method => :delete, :class => 'btn btn-xs btn-danger') %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div align="right"><%= will_paginate @fases,:remote => true,:renderer => BootstrapPagination::Rails %></div>
+      <a data-toggle="modal" class="btn btn-success" href="#new-categoria"  type="button">Nova Categoria</a>
+      <%= render "categorias/new_categoria"%>
+    </div>
+  </div>
+</div>
+</div>
