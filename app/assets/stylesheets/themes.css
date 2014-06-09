@@ -861,10 +861,12 @@ a:focus, button:focus {
     padding-bottom: 70px; }
 #home #pricing .header {
     text-align: center;
-    font-family: "Lato", "Helvetica Neue", Arial; }
+    font-family: "Lato", "Helvetica Neue", Arial;
+    color: #fff;}
 @media (max-width: 991px) {
     #home #pricing .header {
-        margin-bottom: 25px; } }
+        margin-bottom: 25px;
+        color: #fff;} }
 #home #pricing .header h3 {
     font-size: 29px;
     color: #fff;
@@ -874,7 +876,8 @@ a:focus, button:focus {
 @media (max-width: 767px) {
     #home #pricing .header h3 {
         font-size: 24px;
-        line-height: 29px; } }
+        line-height: 29px;
+        color: #fff;} }
 #home #pricing .header p {
     font-size: 16px;
     margin-top: 15px;
