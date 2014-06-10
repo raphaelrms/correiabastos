@@ -80,7 +80,7 @@
   <!--</div>-->
 
   <div class="header">
-      <h3>Áreas de atuação</h3>
+      <h3 id="areas">Áreas de atuação</h3>
   </div>
   <div class="container-fluid">
     <div class="row-fluid">
@@ -343,6 +343,20 @@
 
         $(document).on('hidden.bs.modal', function () {
             $(".ketchup-error").hide();
+        });
+        $(function() {
+            $('a[href*=#]:not([href=#])').click(function() {
+                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
         });
 
 
