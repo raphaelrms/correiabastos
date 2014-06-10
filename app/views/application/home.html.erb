@@ -17,7 +17,7 @@
 <div id="missao" class="page-alternate">
 <div class="container">
   <div class="row header">
-    <div class="col-md-12 lead">
+    <div class="col-md-12 lead text-justify">
       <h2>Missão e valores</h2>
       <p>O Bastos e Corrêa é um escritório voltado para a prestação de serviços jurídicos de alta qualidade técnica, pautando-se em quatro princípios fundamentais: <b>ética, transparência, agilidade e excelência</b>.
 
@@ -37,26 +37,7 @@
   </div>
 </div>
 </div>
-    <!--<div class="row">-->
-      <!--<div class="col-md-12 slide-wrapper">-->
-        <!--<div class="slideshow">-->
-          <!--<div class="btn-nav prev"><span class="glyphicon glyphicon-chevron-left"></span></div>-->
-          <!--<div class="btn-nav next"><span class="glyphicon glyphicon-chevron-right"></span></div>-->
-          <!--<div class="slide">-->
-            <!--<%= image_tag 'familia.jpg', :alt => 'Imagem do brownie para presente'%>-->
-          <!--</div>-->
-          <!--<div class="slide">-->
-            <!--<%= image_tag 'prev.jpg', :alt => 'Imagem do brownie para presente'%>-->
-          <!--</div>-->
-          <!--<div class="slide active">-->
-            <!--<%= image_tag 'bg.jpg', :alt => 'Imagem do brownie para presente'%>-->
-          <!--</div>-->
-        <!--</div>-->
 
-      <!--</div>-->
-    <!--</div>-->
-  </div>
-</div>
 
 <div id="pricing">
   <!--<div id="container">-->
@@ -214,43 +195,31 @@
     </div>
 -->
 
-<div id="testimonials">
+
+<div id="slider">
   <div class="container">
     <div class="row header">
       <div class="col-md-12">
-        <h3>Opinião de alguns dos nossos clientes:</h3>
+        <h3>Notícias</h3>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6">
-        <div class="testimonial pull-right">
-          <div class="quote">
-            Mayara? Conheço.
-            <div class="arrow-down">
-              <div class="arrow"></div>
-              <div class="arrow-border"></div>
-            </div>
+      <div class="col-md-12 slide-wrapper">
+        <div class="slideshow">
+          <div class="btn-nav prev"><span class="glyphicon glyphicon-chevron-left"></span></div>
+          <div class="btn-nav next"><span class="glyphicon glyphicon-chevron-right"></span></div>
+          <div class="slide active">
+           <a href="#areas"><%= image_tag 'presente.jpg', :alt => 'Imagem do brownie para presente'%></a>
           </div>
-          <div class="author">
-            <div class="name">Bill Gates</div>
-            <div class="company">Microsoft</div>
+          <div class="slide">
+            <%= image_tag 'brownie-cholate.jpg', :alt => 'Imagem do brownie para presente'%>
+            <div id="subtitulo" style="position: absolute;margin-left: 200px"><%#= @noticias.first.titulo%>sdfsdfds</div>
           </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="testimonial">
-          <div class="quote">
-            Rónaldo!
-            <div class="arrow-down">
-              <div class="arrow"></div>
-              <div class="arrow-border"></div>
-            </div>
-          </div>
-          <div class="author">
-            <div class="name">Zina</div>
-            <div class="company">Pânico</div>
+          <div class="slide">
+            <%= image_tag 'presente.jpg', :alt => 'Imagem do brownie para presente'%>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -262,7 +231,7 @@
       <div class="col-md-12">
         <h3>Obrigado pela visita</h3>
         <p>
-          Caso precise de algo mais customizado, não deixa de entrar em contato.
+          Caso tenha dúvidas, utilize o menu 'contato' no menu superior da página.
         </p>
       </div>
     </div>
@@ -278,16 +247,16 @@
         <h3>Visão Geral</h3>
         <ul>
           <li>
-            <a href="features.html">Sobre a empresa</a>
+            <a href="#missao" >Missão e valores </a>
           </li>
           <li>
-            <a href="services.html">Produtos</a>
+            <a href="#areas">Áreas de atuação</a>
           </li>
           <li>
-            <a href="pricing.html">Preços</a>
+            <a href="#testimonials">Clientes</a>
           </li>
           <li>
-            <a href="support.html">Contato</a>
+            <a data-toggle="modal" href="#novo-contato"  type="button">Contato</a>
           </li>
         </ul>
       </div>
@@ -295,23 +264,17 @@
         <h3>Redes sociais</h3>
         <ul>
           <li>
-            <a href="features.html">Youtube</a>
-          </li>
-          <li>
             <a href="services.html">Facebook</a>
-          </li>
-          <li>
-            <a href="pricing.html">Twitter</a>
           </li>
         </ul>
       </div>
       <div class="col-sm-4 newsletter">
         <div class="signup clearfix">
           <p>
-            Inscreva-se para receber avisos de promoções e novos produtos.
+            Inscreva-se para receber avisos e notícias do mundo jurídico.
           </p>
           <form>
-            <input type="text" name="email" class="form-control" placeholder="Your email address">
+            <input type="text" name="email" class="form-control" placeholder="Digite seu e-mail">
             <input type="submit" value="Inscrever-se">
           </form>
         </div>
@@ -319,7 +282,7 @@
     </div>
     <div class="row credits">
       <div class="col-md-12">
-        Desenvolvido por Raphael Menezes
+        Desenvolvido por <a href="mailto:raphaelrms@id.uff.br">Raphael Menezes</a>
       </div>
     </div>
   </div>
@@ -346,7 +309,7 @@
         });
         $(function() {
             $('a[href*=#]:not([href=#])').click(function() {
-                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname && this.type != "button") {
                     var target = $(this.hash);
                     target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
                     if (target.length) {
