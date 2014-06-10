@@ -852,10 +852,10 @@ a:focus, button:focus {
     border-top: 1px solid #EAEAEA;
     border-bottom: 1px solid #EAEAEA;
     background: #5E7A9B;
-    background: -webkit-linear-gradient(top, #5A3131 0, rgba(90, 49, 49, 0.44) 100%);
-    background: -moz-linear-gradient(top, #5A3131 0, rgba(90, 49, 49, 0.44) 100%);
-    background: -o-linear-gradient(top, #5A3131 0, rgba(90, 49, 49, 0.44) 100%);
-    background: linear-gradient(top, #5A3131 0, rgba(90, 49, 49, 0.44) 100%);
+    background: -webkit-linear-gradient(top, #AD7272 0, #AD8181 100%);
+    background: -moz-linear-gradient(top, #AD7272 0, #AD8181 100%);
+    background: -o-linear-gradient(top,#AD7272 0, #AD8181 100%);
+    background: linear-gradient(top, #AD7272 0, #AD8181 100%);
     margin-top: 110px;
     padding-top: 45px;
     padding-bottom: 70px; }
