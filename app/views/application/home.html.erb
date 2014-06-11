@@ -204,26 +204,25 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 slide-wrapper">
-        <div class="slideshow">
-          <div class="btn-nav prev"><span class="glyphicon glyphicon-chevron-left"></span></div>
-          <div class="btn-nav next"><span class="glyphicon glyphicon-chevron-right"></span></div>
-          <div class="slide active">
-           <a href="#areas"><%= image_tag 'presente.jpg', :alt => 'Imagem do brownie para presente'%></a>
-          </div>
-          <div class="slide">
-            <%= image_tag 'brownie-cholate.jpg', :alt => 'Imagem do brownie para presente'%>
-            <div id="subtitulo" style="position: absolute;margin-left: 200px"><%#= @noticias.first.titulo%>sdfsdfds</div>
-          </div>
-          <div class="slide">
-            <%= image_tag 'presente.jpg', :alt => 'Imagem do brownie para presente'%>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
 </div>
+</div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+
+<%= render "layouts/carousel2"%>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
 
 <div id="clients">
   <div class="container">
@@ -307,20 +306,7 @@
         $(document).on('hidden.bs.modal', function () {
             $(".ketchup-error").hide();
         });
-        $(function() {
-            $('a[href*=#]:not([href=#])').click(function() {
-                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname && this.type != "button") {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                    if (target.length) {
-                        $('html,body').animate({
-                            scrollTop: target.offset().top
-                        }, 1000);
-                        return false;
-                    }
-                }
-            });
-        });
+
 
 
         $('#mensagem').keydown(function(event){
@@ -333,6 +319,25 @@
                 }
             }
         });
+
+        $(".slider1 .slide img").MyThumbnail({
+            thumbWidth:600,
+            thumbHeight:300,
+            backgroundColor:"#ccc",
+            imageDivClass:"myPic"
+        });
+
+
+
+        $('.slider1').bxSlider({
+            slideWidth: 5000,
+            minSlides: 2,
+            maxSlides: 4,
+            slideMargin:10
+        });
+
+
+
 
     });
 

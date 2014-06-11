@@ -15,8 +15,24 @@
     /*padding-right: 20px;*/
     /*color: red;*/
 
-p::selection{ background: #ffb7b7 }
+p::selection{ background: #ffb7b7;}
 
+.subtitulo {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    background: url('http://s.glbimg.com/es/ge/static/live/img/ge_ui/sombra-uberzinho-posjogo.png?1d373f4fbdc6') no-repeat left bottom;
+    height: 300px;
+    opacity: 0.7;
+    position: absolute;margin: 9px 0px 0px 11px;
+    width: 90.5%;
+    z-index: 1;
+    overflow: hidden;
+    /*position: absolute;*/
+    /*text-shadow: 3px 3px 18px rgba(150, 150, 149, 1);*/
+}
 
 .field_with_errors { display: inline}
 
