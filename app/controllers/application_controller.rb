@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
   def home
     #@users = User.all
+    @noticia = Noticia.new
+    @roles = Role.all
     @noticias = Noticia.paginate(:page => params[:page])
   end
 

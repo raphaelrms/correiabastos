@@ -21,9 +21,3 @@ Permission.find_or_create_by_action_and_subject_class_and_subject_id(:action => 
 perm = Permission.find_or_create_by_action_and_subject_class(:action => 'manage', :subject_class => 'all')
 prole = PermissionRole.new :permission_id => perm.id, :role_id => user.roles.first.id
 prole.save!
-
-
-
-puts 'Criando categoria "SEM CATEGORIA"'
-categoria = Categoria.find_or_create_by_descricao :descricao => "SEM CATEGORIA"
-puts "Categoria '#{categoria.descricao}' criada com sucesso."

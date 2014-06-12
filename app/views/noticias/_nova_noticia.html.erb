@@ -8,26 +8,22 @@
         <h3 class="modal-title" id="meuModal_novo">Contato</h3>
       </div>
       <div class="modal-body">
-  <div class="row">
-    <div class="col-md-10"> <%= exibe_erros(@noticia).html_safe if @noticia.errors.any?%></div>
-  </div>
-  <p>
-  <%= form_for @noticia, :html => {:class => 'form-horizontal' } do |f| %>
-
-     <%= render :partial => 'form',:locals => { :f => f, :role => @role } %>
-
-      <div class="form-group">
-        <div class="col-sm-2 col-md-offset-3">
-          <%= f.submit 'Cadastrar', :class => 'btn-primary' %>
+        <div class="row">
+          <div class="col-md-10"> <%= exibe_erros(@noticia).html_safe if !@noticia.nil? && @noticia.errors.any?%></div>
         </div>
-      </div>
+        <p>
+          <%= form_for @noticia, :html => {:class => 'form-horizontal' } do |f| %>
+
+              <%= render :partial => 'noticias/form',:locals => { :f => f, :role => @role } %>
+
+
             <div class="modal-footer">
               <div class="well well-sm">
                 <a class="btn btn-default" data-dismiss="modal" href="#" id="fechar">Fechar</a>
-                <%= submit_tag 'Enviar', :class => 'btn btn-primary' %>
+                <%= f.submit 'Enviar', :class => 'btn btn-primary' %>
               </div>
             </div>
-  <% end %>
+        <% end %>
       </div>
     </div>
   </div>
