@@ -1,0 +1,54 @@
+#encoding: utf-8
+<div id="login" aria-hidden="true" role="dialog" aria-labelledby="meuModal_novo" class="modal" style="display: none;">
+  <%= tinymce%>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">&#215;</a>
+        <h3 class="modal-title" id="meuModal_novo">Matéria</h3>
+      </div>
+      <div class="modal-body">
+        <%= form_for resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' } do |f| %>
+
+            <div class="form-group">
+              <%= f.label :email,:class => "col-md-2 control-label" %>
+              <div class="col-md-7">
+                <%= f.text_field :email, :autofocus => true, :class => "form-control",:placeholder => "Digite seu e-mail cadastrado"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password, "Senha",:class => "col-md-2 control-label" %>
+              <div class="col-md-7">
+                <%= f.password_field :password, :class => "form-control", :placeholder => "Digite sua senha"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row" >
+                <%= f.label :remember_me, "Mantenha-me logado",:class => "col-md-4 control-label" %>
+                <div class="col-md-7">
+                  <%= f.check_box :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <div class="col-md-7">
+                <%= f.submit "Acessar", :class => 'btn btn-primary', :style => "margin-top:25px;" %>
+
+              </div>
+
+            </div>
+
+
+            <br>
+
+            <%= render "devise/shared/links" %></p>
+            <br>
+            </div>
+        <% end %>
+        <%# end %>
+        </div>
+  </div>
+</div>

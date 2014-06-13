@@ -6822,3 +6822,43 @@ html.bg {
     position: absolute;
     top: -4px;
     left: 0; }
+
+
+
+#home #missao {
+    -webkit-font-smoothing: antialiased;
+    margin-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 20px; }
+#home #missao .header {
+    text-align: center;
+    font-family: "Lato", "Helvetica Neue", Arial;
+    color: #555;}
+@media (max-width: 991px) {
+    #home #missao .header {
+        margin-bottom: 25px;
+        color: #555;} }
+#home #missao .header h3 {
+    font-size: 29px;
+    color: #555;
+    line-height: 25px;
+    font-weight: 400;
+    margin-top: 0;
+    font-family: "Lato", "Helvetica Neue", Arial;
+    font-weight: 300;
+    font-size: 35px;
+    letter-spacing: .3px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    padding-bottom: 10px;}
+@media (max-width: 767px) {
+    #home #missao .header h3 {
+        font-size: 24px;
+        line-height: 29px;
+        color: #555;} }
+#home #missao .header p {
+    font-size: 16px;
+    margin-top: 15px;
+    color: #F0F0F0;
+    font-weight: 400;
+    line-height: 25px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }

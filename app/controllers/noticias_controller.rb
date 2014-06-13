@@ -44,7 +44,7 @@ class NoticiasController < ApplicationController
       @roles = Role.all
       flash[:error] = "Nãoo foi posível criar notícia."
       @erros = @noticia.errors.messages.collect{|k,v|v[0]}
-      render :new
+      render root_path
     end
   end
 

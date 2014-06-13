@@ -1,13 +1,26 @@
-<div class="slider1">
-  <div class="slide "><img src="/assets/prev.jpg" class=""><div class='subtitulo'><a href="#areas" style="margin: 180px 0px 0px 11px;color: #fff;position:absolute"><%=@noticias.last.titulo%></a>
-    <div style="margin: 205px 0px 0px 11px;color: #fff;position:absolute"><%=@noticias.last.corpo.html_safe%></div></div></div>
-  <div class="slide"><img src="http://placehold.it/700x350&text=FooBar1"></div>
-  <div class="slide"><img src="http://placehold.it/500x150&text=FooBar1"></div>
-  <div class="slide"><img src="http://placehold.it/500x150&text=FooBar4"></div>
-  <div class="slide"><img src="http://placehold.it/500x150&text=FooBar5"></div>
-  <div class="slide"><img src="http://placehold.it/500x150&text=FooBar6"></div>
-  <div class="slide"><img src="http://placehold.it/500x150&text=FooBar7"></div>
-  <div class="slide"><img src="http://placehold.it/500x150&text=FooBar8"></div>
-  <div class="slide"><img src="http://placehold.it/500x150&text=FooBar9"></div>
-  <div class="slide"><img src="http://placehold.it/500x150&text=FooBar10"></div>
+<div id="carousel1" class="carousel slide carrosel" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <%@noticias.each do |n|%>
+    <li data-target="#carousel1" data-slide-to="<%=@noticias.index(n)%>" <%= "class=active" if n == @noticias.first%>></li>
+    <%end%>
+  </ol>
+  <div class="carousel-inner">
+
+    <%@noticias.each do |n|%>
+    <div class="item <%="active" if n == @noticias.first%>" >
+      <div class="subtitulo"></div>
+      <img style="margin: 0 auto;" data-src="" alt="First slide" src="<%=!n.arquivos.any? ? "/assets/balanca.jpg"  : arquivo_path(n.arquivos.first.arquivo)%>" width="500" height="300">
+      <div class="carousel-caption">
+        <h3><%=n.titulo%></h3>
+        <p><%=n.subtitulo%></p>
+      </div>
+    </div>
+    <%end%>
+  </div>
+  <a class="left carousel-control" href="#carousel1" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel1" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
 </div>

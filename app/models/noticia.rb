@@ -3,14 +3,15 @@ class Noticia < ActiveRecord::Base
   has_many :noticia_permissoes
   has_many :comentarios
   belongs_to :user
+  has_many :arquivos, :as => :anexo, :dependent => :destroy
   has_many :roles, :through => :noticia_permissoes
   accepts_nested_attributes_for :noticia_permissoes
   #delegate :roles, :to => :noticia_permissoes
   IDS_PERMISSOES = [1, 2, 3]
-
+  accepts_nested_attributes_for :arquivos
   validates :titulo, :presence => true
   validates :corpo, :presence => true
-  attr_accessible :titulo, :subtitulo, :tags,:noticia_permissoes_attributes,:corpo,:noticia_permissoes,:role_id
+  attr_accessible :titulo, :subtitulo, :tags,:noticia_permissoes_attributes,:arquivos,:corpo,:noticia_permissoes,:role_id,:anexo_attributes,:arquivos_attributes
   #before_validation :validar_permissoes
 
   default_scope order("updated_at desc")

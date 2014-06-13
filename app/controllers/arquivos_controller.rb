@@ -15,11 +15,7 @@ class ArquivosController < ApplicationController
     respond_to do |format|
       if @arquivo.destroy
         format.html {
-          if @tipo.is_a? Curso
-            redirect_to curso_path(@tipo), :notice => "Arquivo \"#{nome}\" removido com sucesso."
-          else
-            redirect_to fase_path(@tipo), :notice => "Arquivo \"#{nome}\" removido com sucesso."
-          end
+            redirect_to root_path, :notice => "Arquivo \"#{nome}\" removido com sucesso."
         }
         format.json { render "destroy"}
       else

@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
 
   def home
     #@users = User.all
-    @noticias = Noticia.all
+    @noticias = Noticia.limit(5).order("created_at desc")
+    @noticia = Noticia.new
   end
 
   def contato

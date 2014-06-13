@@ -1,63 +1,85 @@
 #encoding: utf-8
-    <div class="form-group">
-        <%= f.label :titulo, "Título*:", :class => "col-md-3 control-label" %>
+<div class="form-group">
+  <%= f.label :titulo, "Título*:", :class => "col-md-3 control-label" %>
+  <div class="col-md-7">
+    <%= f.text_field :titulo, :class => "form-control","data-validate" => "validate(required)",:title => "Insira um título para a notícia",:placeholder => "Insira um título para a notícia"%>
+    <p class="help-block" style="font-size: 11px;">Insira um título para a notícia. Obrigatório.</p>
+  </div>
+</div>
 
-      <div class="col-md-7">
-        <%= f.text_field :titulo, :class => "form-control","data-validate" => "validate(required)",:title => "Insira um título para a notícia",:placeholder => "Insira um título para a notícia"%>
-      <p class="help-block" style="font-size: 11px;">Insira um título para a notícia. Obrigatório.</p>
-    </div>
-    </div>
+<div class="form-group">
+  <%= f.label :subtitulo, "Subtítulo*:", :class => "col-md-3 control-label" %>
+  <div class="col-md-7">
+    <%= f.text_field :subtitulo, :class => "form-control","data-validate" => "validate(required)",:title => "Insira um subtítulo para a notícia",:placeholder => "Insira um subtítulo para a notícia"%>
+    <p class="help-block" style="font-size: 11px;">Insira um subtítulo para a notícia. Obrigatório.</p>
+  </div>
+</div>
 
-      <div class="form-group">
-        <%#= f.label :tags, "Tags:", :class => "col-md-3 control-label" %>
-        <div class="col-md-7">
-        <%#= f.text_field :tags, :class => "form-control",:placeholder => "Insira um título para a notícia" %>
-        <!--<p class="help-block" style="font-size: 11px;">Insira tags para classificar a notícia. Não obrigatório.</p>-->
-      </div>
 
-        <div class="form-group">
-          <%= label_tag :descricao,"Quem pode ver?",:class => "col-md-3 control-label" %>
+  <!--<div class="form-group">-->
+  <!--<%#= label_tag :descricao,"Quem pode ver?",:class => "col-md-3 control-label" %>-->
 
-          <%@roles.each do |role|%>
-              <%= label_tag :role_ids, role.name,:class => "col-md-1 control-label" %>
-              <div class="col-md-1">
-                <%= check_box_tag :role_ids, role.id, @noticia.noticia_permissoes.include?(role) , :name => 'noticia[noticia_permissoes_attributes][][role_id]',:class => "form-control" %>
+  <!--<%#@roles.each do |role|%>-->
+  <!--<%#= label_tag :role_ids, role.name,:class => "col-md-1 control-label" %>-->
+  <!--<div class="col-md-1">-->
+  <!--<%#= check_box_tag :role_ids, role.id, @noticia.noticia_permissoes.include?(role) , :name => 'noticia[noticia_permissoes_attributes][][role_id]',:class => "form-control" %>-->
 
-              </div>
-          <%end%>
+  <!--</div>-->
+  <!--<%#end%>-->
 
+  <!--</div>-->
+<fieldset>
+  <h2>Anexos</h2>
+  <%= link_to_add_fields "   ",f,:arquivos, "btn btn-fields"%>
+  <br>
+  <%= f.fields_for :arquivos, :html => {:multipart => true,:class => "form-vertical", :role => "form"} do |arq| %>
+
+      <div id="<%=arq.object.id if !arq.object.nil?%>">
+        <div class="well">
+          <div class="form-group">
+            <%= arq.label :arquivo,:class => "col-md-2 control-label" %>
+            <% if !arq.object.nil? && arq.object.arquivo.exists? %>
+                <div class="col-md-2 form-control-static"><%=arq.object.arquivo_file_name%> <%=link_to "<span class=\"glyphicon glyphicon-trash remover\"></span>".html_safe, arq.object,:data => { :confirm => "Você tem certeza que deseja excluir o arquivo <strong>"+arq.object.arquivo_file_name+"</strong>?" }, :method => :delete%></div>
+            <%else%>
+                <%= arq.file_field :arquivo, :value => (arq.object.arquivo_file_name  if !arq.object.nil?),:class => "col-md-3",:placeholder => "Anexe o edital do curso"%><span onclick="$(this).parent().parent().remove();" class="glyphicon glyphicon-trash" style="cursor: pointer;"></span>
+            <%end%>
+          </div>
+          <!--<div style="margin-top:-70px;">-->
+          <div class="form-group">
+            <%= arq.label :descricao, "Descrição",:class => "col-md-2 control-label" %>
+            <div class="col-sm-4">
+              <%= arq.text_field :descricao,:class => "form-control", :autofocus => true,:placeholder => "Insira uma descrição para o anexo.", :value => (arq.object.descricao  if !arq.object.nil?)%>
+            </div>
+          </div>
         </div>
+      </div>
+  <%end%>
+</fieldset>
 
-
-
-    <div class="form-group">
-        <%= f.label :corpo, "Corpo do aviso:", :class => "col-md-3 control-label"  %>
-      <div class="col-md-7">
-        <%= f.text_area :corpo, :class => "tinymce form-control","data-validate" => "validate(required)", :rows => 40, :cols => 100 %>
+  <div class="form-group">
+    <%= f.label :corpo, "Corpo do aviso:", :class => "col-md-3 control-label"  %>
+    <div class="col-md-7">
+      <%= f.text_area :corpo, :class => "tinymce form-control","data-validate" => "validate(required)", :rows => 40, :cols => 100 %>
       <p class="help-block" style="font-size: 11px;">Insira uma descrição do custo. Obrigatório.</p>
     </div>
-    </div>
-      </div>
-      </div>
+  </div>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#new_noticia").ketchup();
-        $("[id*=_tags]").tokenInput('<%= buscar_tag_noticias_path %>', {
-            tokenLimit: 5,
-            theme: "facebook",
-            preventDuplicates: true,
-            allowCustomEntry: true,
-            minChars: 3,
-            hintText: "Digite um termo para a pesquisa das tags",
-            noResultsText: "Nenhum resultado",
-            searchingText: "Pesquisando..."
-            <% if !@noticia.new_record? %>
-            ,prePopulate: [
-                <% @noticia.tags.split(",").each do |tag| %>
-                {"id": "<%= tag %>", "name": "<%= tag %>"},
-                <% end %>
-            ]
-            <% end %>
-        });
+
+//        $("[id*=_tags]").tokenInput('<%= buscar_tag_noticias_path %>', {
+//            tokenLimit: 5,
+//            theme: "facebook",
+//            zindex: 9999,
+//            preventDuplicates: true,
+//            allowCustomEntry: true,
+//            minChars: 3,
+//            hintText: "Digite um termo para a pesquisa das tags",
+//            noResultsText: "Nenhum resultado",
+//            searchingText: "Pesquisando..."
+//        });
     });
 </script>
+
+
+
