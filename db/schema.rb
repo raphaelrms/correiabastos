@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140407004405) do
+ActiveRecord::Schema.define(:version => 20140613231703) do
 
   create_table "arquivos", :force => true do |t|
-    t.integer  "curso_id",             :null => false
     t.string   "descricao"
     t.string   "arquivo_file_name"
     t.string   "arquivo_content_type"

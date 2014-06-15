@@ -15,23 +15,38 @@
     /*padding-right: 20px;*/
     /*color: red;*/
 
+
+/*style="width: 500px; max-heigth: 250px !important; margin: 0 auto"*/
+/* Smaller than standard 960 (devices and browsers) */
+.carrosel{width: 500px !important;margin: 0 auto;}
+@media screen and (max-width: 959px)  {.carrosel{width: 500px !important;margin: 0 auto;}}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media screen and (min-width: 768px) and (max-width: 959px) {.carrosel{width: 500px!important;margin: 0 auto;}}
+
+/* All Mobile Sizes (devices and browser) */
+@media screen and (max-width: 767px) {.slide{width: 400px!important;margin: 0 auto;}}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media screen and (min-width: 480px) and (max-width: 767px) {.slide{width: 400px;margin: 0 auto;}}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media screen and (max-width: 479px) {.slide{width: 400px;margin: 0 auto;}}
+
+
+
 p::selection{ background: #ffb7b7;}
 
 .subtitulo {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    border-radius: 10px;
     background: url('http://s.glbimg.com/es/ge/static/live/img/ge_ui/sombra-uberzinho-posjogo.png?1d373f4fbdc6') no-repeat left bottom;
-    height: 300px;
+    height: 100%;
     opacity: 0.7;
-    position: absolute;margin: 9px 0px 0px 11px;
-    width: 90.5%;
-    z-index: 1;
+    bottom: 0px;
+    width: 100%;
     overflow: hidden;
-    /*position: absolute;*/
-    /*text-shadow: 3px 3px 18px rgba(150, 150, 149, 1);*/
+    position: absolute;
+}
+/* text-shadow: 3px 3px 18px rgba(150, 150, 149, 1);
 }
 
 .field_with_errors { display: inline}

@@ -14,11 +14,13 @@
   </div>
 </div>
 
-<div id="missao" class="page-alternate">
+
+<div id="missao" class="pricing">
+  <div class="header">
+    <h3>Missão e valores</h3>
+  </div>
 <div class="container">
-  <div class="row header">
-    <div class="col-md-12 lead text-justify">
-      <h2>Missão e valores</h2>
+    <div class="col-md-12 lead text-justify ">
       <p>O Bastos e Corrêa é um escritório voltado para a prestação de serviços jurídicos de alta qualidade técnica, pautando-se em quatro princípios fundamentais: <b>ética, transparência, agilidade e excelência</b>.
 
       <p> Contando com advogados especializados, nosso escritório oferece serviços de consultoria e representação administrativa e judicial, especialmente na área de Direito Previdenciário.
@@ -36,10 +38,9 @@
     </div>
   </div>
 </div>
-</div>
 
 
-<div id="pricing">
+
   <!--<div id="container">-->
     <!--<div class="row header">-->
       <!--<div class="col-md-12">-->
@@ -59,7 +60,7 @@
       <!--</div>-->
     <!--</div>-->
   <!--</div>-->
-
+<div id="pricing">
   <div class="header">
       <h3 id="areas">Áreas de atuação</h3>
   </div>
@@ -157,7 +158,6 @@
       </div>
 
     </div>
-    <div class="divider"></div>
   </div>
 </div>
 
@@ -166,33 +166,6 @@
 
 <!--
 
-<div id="slider">
-  <div class="container">
-    <div class="row header">
-      <div class="col-md-12">
-        <h3>sdfsdffsdfdf</h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 slide-wrapper">
-      <div class="slideshow">
-          <div class="btn-nav prev"><span class="glyphicon glyphicon-chevron-left"></span></div>
-          <div class="btn-nav next"><span class="glyphicon glyphicon-chevron-right"></span></div>
-          <div class="slide">
-            <%#= image_tag 'presente.jpg', :alt => 'Imagem do brownie para presente'%>
-          </div>
-          <div class="slide">
-            <%#= image_tag 'brownie-cholate.jpg', :alt => 'Imagem do brownie para presente'%>
-          </div>
-          <div class="slide active">
-            <%#= image_tag 'presente.jpg', :alt => 'Imagem do brownie para presente'%>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    </div>
-    </div>
 -->
 
 
@@ -203,18 +176,42 @@
         <h3>Notícias</h3>
       </div>
     </div>
-    <div class="row">
-</div>
+
+      <div class="col-md-12">
+        <%= render "layouts/carousel2"%>
+        <!--<div class="slideshow">-->
+          <!--<div class="btn-nav prev"><span class="glyphicon glyphicon-chevron-left"></span></div>-->
+          <!--<div class="btn-nav next"><span class="glyphicon glyphicon-chevron-right"></span></div>-->
+
+          <!--<%#@noticias.each do |n|%>-->
+              <!--<div class="slide active">-->
+                <!--<%#= image_tag 'prev.jpg', :alt => 'Imagem do brownie para presente'%>-->
+              <!--</div>-->
+          <!--<div class="slide">-->
+            <!--<%#= image_tag 'trab.jpg', :alt => 'Imagem do brownie para presente'%>-->
+          <!--</div>-->
+          <!--<div class="slide">-->
+            <!--<%#= image_tag 'militar.jpg', :alt => 'Imagem do brownie para presente'%>-->
+          <!--</div>-->
+          <!--<%#end%>-->
+
+
+        <!--</div>-->
+
+      <!--</div>-->
+    </div>
 </div>
 </div>
 
-<div class="container-fluid">
-<div class="row">
 
-<%= render "layouts/carousel2"%>
 
-</div>
-</div>
+<!--<div class="container-fluid">-->
+<!--<div class="row">-->
+
+<!--<%#= render "layouts/carousel2"%>-->
+
+<!--</div>-->
+<!--</div>-->
 
 
 
@@ -256,6 +253,9 @@
           </li>
           <li>
             <a data-toggle="modal" href="#novo-contato"  type="button">Contato</a>
+          </li>
+          <li>
+            <a data-toggle="modal" href="#login"  type="button">Login</a>
           </li>
         </ul>
       </div>
@@ -306,7 +306,20 @@
         $(document).on('hidden.bs.modal', function () {
             $(".ketchup-error").hide();
         });
-
+        $(function() {
+            $('a[href*=#]:not([href=#],[href=#novo-noticia],[href=#novo-contato],[href=#carousel1],[href=#login])').click(function() {
+                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
 
 
         $('#mensagem').keydown(function(event){
@@ -320,21 +333,21 @@
             }
         });
 
-        $(".slider1 .slide img").MyThumbnail({
-            thumbWidth:600,
-            thumbHeight:300,
-            backgroundColor:"#ccc",
-            imageDivClass:"myPic"
-        });
-
-
-
-        $('.slider1').bxSlider({
-            slideWidth: 5000,
-            minSlides: 2,
-            maxSlides: 4,
-            slideMargin:10
-        });
+//        $(".slider1 .slide img").MyThumbnail({
+//            thumbWidth:600,
+//            thumbHeight:300,
+//            backgroundColor:"#ccc",
+//            imageDivClass:"myPic"
+//        });
+//
+//
+//
+//        $('.slider1').bxSlider({
+//            slideWidth: 5000,
+//            minSlides: 2,
+//            maxSlides: 4,
+//            slideMargin:10
+//        });
 
 
 

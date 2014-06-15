@@ -15,7 +15,7 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-           <a href="#missao" >Missão e valores </a>
+          <a href="#missao" >Missão e valores </a>
         </li>
         <li class="dropdown">
           <a href="#areas">Áreas de atuação</a>
@@ -24,17 +24,18 @@
           <a href="#testimonials">Notícias</a>
         </li>
         <li class="dropdown">
-            <a data-toggle="modal" href="#novo-contato"  type="button">Contato</a>
+          <a data-toggle="modal" href="#novo-contato"  type="button">Contato</a>
         </li>
         <%if can? :menu_configuracao, RailsPadrao%>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações<b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a data-toggle="modal" href="#nova-noticia"  type="button">Nova notícia</a></li>
-            <li><a href="<%= noticias_path%>">Listar notícia</a></li>
-          </ul>
-        </li>
-         <%end%>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a data-toggle="modal" href="#novo-noticia"  type="button">Adicionar matéria</a></li>
+              </ul>
+            </li>
+        <%end%>
+
+
       </ul>
     </nav>
   </div><!-- /.navbar-collapse -->
@@ -43,3 +44,4 @@
 
 <%= render "layouts/contato"%>
 <%= render "noticias/nova_noticia"%>
+<%= render "devise/sessions/nova_session"%>
