@@ -2,7 +2,7 @@
 <div class="form-group">
   <%= f.label :titulo, "Título*:", :class => "col-md-3 control-label" %>
   <div class="col-md-7">
-    <%= f.text_field :titulo, :class => "form-control","data-validate" => "validate(required)",:title => "Insira um título para a notícia",:placeholder => "Insira um título para a notícia"%>
+    <%= f.text_field :titulo, :class => "form-control","data-validate" => "validate(required)",:title => "Insira um título para a notícia",:placeholder => "Insira um título para a notícia",:autofocus => true%>
     <p class="help-block" style="font-size: 11px;">Insira um título para a notícia. Obrigatório.</p>
   </div>
 </div>
@@ -30,7 +30,7 @@
   <!--</div>-->
 <fieldset>
   <h2>Anexos</h2>
-  <%= link_to_add_fields "   ",f,:arquivos, "btn btn-fields"%>
+  <%= link_to_add_fields "   ",f,:arquivos, "btn btn-fields","addnoticia"%>
   <br>
   <%= f.fields_for :arquivos, :html => {:multipart => true,:class => "form-vertical", :role => "form"} do |arq| %>
 

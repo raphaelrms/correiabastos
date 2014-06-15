@@ -1,26 +1,36 @@
+#encoding: utf-8
+<%if !@noticias.nil?%>
 <div id="carousel1" class="carousel slide carrosel" data-ride="carousel">
   <ol class="carousel-indicators">
     <%@noticias.each do |n|%>
     <li data-target="#carousel1" data-slide-to="<%=@noticias.index(n)%>" <%= "class=active" if n == @noticias.first%>></li>
     <%end%>
   </ol>
-  <div class="carousel-inner">
 
+
+  <div class="carousel-inner">
     <%@noticias.each do |n|%>
     <div class="item <%="active" if n == @noticias.first%>" >
       <div class="subtitulo"></div>
-      <img style="margin: 0 auto;" data-src="" alt="First slide" src="<%=!n.arquivos.any? ? "/assets/balanca.jpg"  : arquivo_path(n.arquivos.first.arquivo)%>" width="500" height="300">
+      <img class="carrosel" data-src="" alt="First slide" src="<%=!n.arquivos.any? ? "/assets/balanca.jpg"  : arquivo_path(n.arquivos.first.arquivo)%>" >
       <div class="carousel-caption">
         <h3><%=n.titulo%></h3>
         <p><%=n.subtitulo%></p>
       </div>
+
     </div>
+
     <%end%>
   </div>
+
   <a class="left carousel-control" href="#carousel1" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
   <a class="right carousel-control" href="#carousel1" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
+
 </div>
+  <%else%>
+      <div class="col-md-12 text-center">Não há nenhuma matéria publicada.</div>
+  <%end%>

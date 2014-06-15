@@ -42,9 +42,9 @@ class NoticiasController < ApplicationController
       redirect_to root_path, :notice => "Notícia criada com sucesso."
     else
       @roles = Role.all
-      flash[:error] = "Nãoo foi posível criar notícia."
       @erros = @noticia.errors.messages.collect{|k,v|v[0]}
-      render root_path
+      flash[:error] = "Não foi posível criar notícia. Erro:#{@erros}"
+      render "application/home"
     end
   end
 
